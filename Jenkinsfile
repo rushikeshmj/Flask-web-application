@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        EC2_IP = 'your-ec2-public-ip'
-        SSH_CREDENTIALS_ID = 'your-ssh-credentials-id'
+        EC2_IP = '54.226.60.27'
+        SSH_CREDENTIALS_ID = 'ssh_key'
     }
 
     stages {
