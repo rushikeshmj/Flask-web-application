@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        EC2_IP = 'your-ec2-public-ip'
-        SSH_CREDENTIALS_ID = 'your-ssh-credentials-id'
+        EC2_IP = '54.226.60.27'
+        SSH_CREDENTIALS_ID = 'ssh_key'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/yourusername/sample-app.git'
+                git 'https://github.com/rushikeshmj/Flask-web-application.git'
             }
         }
 
@@ -37,9 +37,9 @@ pipeline {
             steps {
                 sshagent(['SSH_CREDENTIALS_ID']) {
                     sh '''
-                    scp -r * ec2-user@${EC2_IP}:/home/ec2-user/sample-app/
+                    scp -r * ec2-user@${EC2_IP}:/home/ec2-user/Flask-web-application/
                     ssh ec2-user@${EC2_IP} << EOF
-                    cd /home/ec2-user/sample-app
+                    cd /home/ec2-user/Flask-web-application
                     python3 -m venv venv
                     source venv/bin/activate
                     pip install -r requirements.txt
