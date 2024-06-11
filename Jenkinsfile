@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EC2_IP = '54.226.60.27'
+        EC2_IP = '3.83.234.183'
         SSH_CREDENTIALS_ID = 'ssh_key'
     }
 
@@ -16,10 +16,10 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                python3 -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
-                pip install gunicorn
+                python3 -m venv ~/.venv
+                source ~/.venv/bin/activate
+                pip3 install -r requirements.txt
+                pip3 install gunicorn
                 '''
             }
         }
