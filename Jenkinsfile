@@ -5,8 +5,7 @@ pipeline {
         EC2_IP = '3.83.234.183'
         SSH_CREDENTIALS_ID = 'ssh_key'
     }
-
-    stages {
+stages {
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/rushikeshmj/Flask-web-application.git'
@@ -16,10 +15,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                python3 -m venv ~/.venv
-                source ~/.venv/bin/activate
-                pip3 install -r requirements.txt
-                pip3 install gunicorn
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
                 '''
             }
         }
